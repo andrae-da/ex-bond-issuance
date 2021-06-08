@@ -1,0 +1,12 @@
+{
+  "operator" : "Operator",
+  "regulator" : "Regulator",
+  "auctionAgent" : "AuctionAgent",
+  "bank1" : "Bank1",
+  "bank2" : "Bank2",
+  "bank3" : "Bank3",
+  "bank4" : "Bank4",
+  "csd" : "Csd",
+  "issuer" : "Issuer",
+  "centralBank" : "CentralBank"
+}

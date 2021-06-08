@@ -544,10 +544,8 @@ redemption Parties{..} issuance assetsForRedemption remainedBondDeposit settleRe
   payment.asset.id.label === "USD"
   payment.account.owner === bank3
 
--- Test with walking through all the supported steps of the workflow
-testFullScenario: Script ()
-testFullScenario = script do
-  parties <- allocateParties
+runFullScenario: Parties -> Script ()
+runFullScenario parties = script do
   setTime (time (date 2020 Jan 01) 0 0 0)
   issuance <- setupIssuance parties
   progress <- startAuction parties issuance
@@ -555,3 +553,8 @@ testFullScenario = script do
   assetsForRedemption <- doSettlement parties issuance settleRequests progress
   redemption parties issuance assetsForRedemption remainedBond settleRequests
   pure ()
+
+-- Test with walking through all the supported steps of the workflow
+testFullScenario: Script ()
+testFullScenario = script do
+  allocateParties >>= runFullScenario
